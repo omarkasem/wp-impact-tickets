@@ -1,24 +1,24 @@
 <div class="col-md-12">
   <form method="post" class="form-horizontal" action="options.php">
     <?php
-    settings_fields( 'wp_impact_settings' );
-    do_settings_sections( 'wp_impact_settings' );
+    settings_fields( 'wp_vivid_seats_settings' );
+    do_settings_sections( 'wp_vivid_seats_settings' );
     ?>
     <div class="form-group">
-      <label for="wp_impact_acc_id" class="col-sm-3">
+      <label for="wp_vivid_seats_acc_id" class="col-sm-3">
       Account SID
       </label>
       <div class="col-sm-8">
-          <input id="wp_impact_acc_id" class="form-control" value="<?php echo get_option('wp_impact_acc_id'); ?>" type="text" name="wp_impact_acc_id">
+          <input id="wp_vivid_seats_acc_id" class="form-control" value="<?php echo get_option('wp_vivid_seats_acc_id'); ?>" type="text" name="wp_vivid_seats_acc_id">
       </div>
     </div>
 
     <div class="form-group">
-      <label for="wp_impact_auth_token" class="col-sm-3">
+      <label for="wp_vivid_seats_auth_token" class="col-sm-3">
       Auth Token
       </label>
       <div class="col-sm-8">
-          <input id="wp_impact_auth_token" class="form-control" value="<?php echo get_option('wp_impact_auth_token'); ?>" type="text" name="wp_impact_auth_token">
+          <input id="wp_vivid_seats_auth_token" class="form-control" value="<?php echo get_option('wp_vivid_seats_auth_token'); ?>" type="text" name="wp_vivid_seats_auth_token">
       </div>
     </div>
 

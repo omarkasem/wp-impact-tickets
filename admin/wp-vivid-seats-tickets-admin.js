@@ -5,15 +5,17 @@ jQuery( document ).ready( function ($) {
         var key = e.which;
         if(key == 13)  // the enter key code
          {
-           $('.sg_search').click();
+           $('.vst_search').click();
            return false;  
          }
        });   
        
 
 
-    $('.sg_search').on('click',function(e){
+    $('.vst_search').on('click',function(e){
         e.preventDefault();
+        var loader = $('.vst_search img');
+        loader.show();
         var performer = $('.performer').val();
         var category = $('.category').val();
         var venue = $('.venue').val();
@@ -27,10 +29,11 @@ jQuery( document ).ready( function ($) {
 
         jQuery.ajax({
             type: "POST",
-            url: wp_impact.ajax_url,
-            data: { action: 'wp_impact_search',vars:vars},
+            url: wp_vivid_seats.ajax_url,
+            data: { action: 'wp_vivid_seats_search',vars:vars},
             success: function(response){
-                $('.sg_shortcodes .results').html(response.data.output);
+                loader.hide();
+                $('.vst_block .results').html(response.data.output);
             },
         });
 
@@ -38,7 +41,7 @@ jQuery( document ).ready( function ($) {
     });
 
 
-    $('.sg_shortcodes .sg_generate').click(function(e){
+    $('.vst_generate').click(function(e){
         e.preventDefault();
         var performer = $('.performer').val();
         var category = $('.category').val();
@@ -59,11 +62,11 @@ jQuery( document ).ready( function ($) {
             shortcode_div+= ' city="'+city+'"';
         }
 
-        var shortcode = `<li><input type="text" disabled value='[WP_IMPACT_TICKETS `+shortcode_div+`]'><button class="sg_copy">Copy</button></li>`;
-        $('.sg_shortcodes ul.shortcodes').prepend(shortcode);
+        var shortcode = `<li><input type="text" disabled value='[WP_VIVID_SEATS_TICKETS `+shortcode_div+`]'><button class="sg_copy">Copy</button></li>`;
+        $('ul.vst_shortcodes').prepend(shortcode);
     });
 
-    $(document).on("click",".sg_shortcodes .sg_copy",function(e) {
+    $(document).on("click",".vst_block .sg_copy",function(e) {
         e.preventDefault();
         var input = $(this).parent().find('input');
         console.log(input.val());

@@ -1,7 +1,7 @@
 <?php
 /**
- * Plugin Name: WP Impact Tickets
- * Description: Create tickets via impact.
+ * Plugin Name: WP Vivid Seats Tickets
+ * Description: Create tickets via vivid_seats.
  * Version:     1.0.0
  * Author:      Omar Kasem
  * License:     GPL v3
@@ -13,10 +13,10 @@ if ( ! defined( 'WPINC' ) ) {
 	die;
 }
 
-define( 'OK_IMPACT_TICKETS_VERSION', '1.0.0' );
-define( 'OK_IMPACT_TICKETS_NAME', 'wp-impact-tickets' );
-define( 'OK_IMPACT_TICKETS_URL', plugin_dir_url( __FILE__ ) );
-define( 'OK_IMPACT_TICKETS_PATH', plugin_dir_path( __FILE__ ) );
+define( 'OK_VIVID_SEATS_TICKETS_VERSION', '1.0.0' );
+define( 'OK_VIVID_SEATS_TICKETS_NAME', 'wp-vivid-seats-tickets' );
+define( 'OK_VIVID_SEATS_TICKETS_URL', plugin_dir_url( __FILE__ ) );
+define( 'OK_VIVID_SEATS_TICKETS_PATH', plugin_dir_path( __FILE__ ) );
 
 
 require plugin_dir_path( __FILE__ ) . 'app/App.php';
