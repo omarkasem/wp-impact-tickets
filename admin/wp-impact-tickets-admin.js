@@ -47,20 +47,19 @@ jQuery( document ).ready( function ($) {
 
         var shortcode_div ='';
         if(performer){
-            shortcode_div+= 'performer='+performer;
+            shortcode_div+= 'performer="'+performer+'"';
         }
         if(category){
-            shortcode_div+= ' category='+category;
+            shortcode_div+= ' category="'+category+'"';
         }
         if(venue){
-            shortcode_div+= ' venue='+venue;
+            shortcode_div+= ' venue="'+venue+'"';
         }
         if(city){
-            shortcode_div+= ' city='+city;
+            shortcode_div+= ' city="'+city+'"';
         }
-        
 
-        var shortcode = `<li><input type="text" disabled value="[WP_IMPACT_TICKETS `+shortcode_div+`]"><button class="sg_copy">Copy</button></li>`;
+        var shortcode = `<li><input type="text" disabled value='[WP_IMPACT_TICKETS `+shortcode_div+`]'><button class="sg_copy">Copy</button></li>`;
         $('.sg_shortcodes ul.shortcodes').prepend(shortcode);
     });
 

@@ -51,9 +51,12 @@ class Shortcode{
 				'Accept'        => 'application/json',
 			),
 		);
+
+        
         $req = wp_remote_get( $url,$params);
 
         $body_json = json_decode( wp_remote_retrieve_body( $req ) );
+        
         $items = $body_json->Items;
         if(empty($items)){
             return '<p>No events returned.</p>';
