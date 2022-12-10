@@ -16,13 +16,12 @@ class Shortcode{
         }
         
         $url = 'https://api.vivid_seats.com/Mediapartners/'.$acc_id.'/Catalogs/ItemSearch.json';
-        $args['PageSize'] = '10';
         $performer = $atts['performer'];
         $category = $atts['category'];
         $venue = $atts['venue'];
         $city = $atts['city'];
 
-        $req = App::get_events($performer,$category,$venue,$city);
+        $req = App::get_events($performer,$category,$venue,$city,20);
         if(is_wp_error($req)){
             return '<p>API Error.</p>';
         }
@@ -34,6 +33,7 @@ class Shortcode{
             return '<p>No events returned.</p>';
         }
 
+        usort($items, array($this,'date_compare'));
 
         ob_start();
             
@@ -47,7 +47,13 @@ class Shortcode{
 
     }
 
-
+    function date_compare($a, $b){
+        $t1 = strtotime($a->ExpirationDate);
+        $t2 = strtotime($b->ExpirationDate);
+        return $t1 - $t2;
+    }    
+    
+    
 
 
 }

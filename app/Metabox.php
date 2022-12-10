@@ -17,7 +17,7 @@ class Metabox{
         $venue = $_POST['vars']['venue'];
         $city = $_POST['vars']['city'];
 
-        $req = App::get_events($performer,$category,$venue,$city);
+        $req = App::get_events($performer,$category,$venue,$city,10);
 
         if(is_wp_error($req)){
             wp_send_json_success(['success'=>false,'output'=>'<li>API Error.</li>']);

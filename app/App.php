@@ -8,7 +8,7 @@ class App{
         
     }
 
-    public static function get_events($performer,$category,$venue,$city){
+    public static function get_events($performer,$category,$venue,$city,$count=10){
         $acc_id = get_option('wp_vivid_seats_acc_id');
         $auth_token = get_option('wp_vivid_seats_auth_token');
         if(!$acc_id || !$auth_token){
@@ -16,7 +16,7 @@ class App{
         }
 
         $url = 'https://api.impact.com/Mediapartners/'.$acc_id.'/Catalogs/ItemSearch.json';
-        $args['PageSize'] = '10';
+        $args['PageSize'] = $count;
 
         $args['Query'] = '';
         if($performer){
@@ -61,8 +61,8 @@ class App{
             return;
         }
 
-        $url = 'https://api.vivid_seats.com/Mediapartners/'.$acc_id.'/Catalogs/'.intval($_GET['cat']).'/Items/'.sanitize_text_field($_GET['ticket']).'';
-
+        $url = 'https://api.impact.com/Mediapartners/'.$acc_id.'/Catalogs/'.intval($_GET['cat']).'/Items/'.sanitize_text_field($_GET['ticket']).'';
+        
 		$params = array(
 			'timeout'    => 20,
 			'headers'    => array(

@@ -1,15 +1,23 @@
 <div id="wp_vivid_seats_div">
     <div class="container-fluid">
-        <?php foreach($items as $item){
+        <?php $i=-1; foreach($items as $item){$i++;
+            if(strtotime($item->ExpirationDate) < time()){
+                continue;
+            }
+
+            if($i === 10){
+                return;
+            }
+            
             $date = date('F d', strtotime($item->ExpirationDate));
-            $date2 = date('D', strtotime($item->ExpirationDate));
-            $date3 = date('h:i a', strtotime($item->ExpirationDate));
+            $date2 = date('l', strtotime($item->ExpirationDate));
+
             $url = '?cat='.$item->CatalogId.'&ticket='.$item->Id;
         ?>
         <div class="row vivid_seats_div">
             <div class="col-md-2 col-sm-12">
                 <h4><?php echo $date; ?></h4>
-                <h5><?php echo strtoupper($date2) .' '. $date3; ?></h5>
+                <h5><?php echo $date2; ?></h5>
             </div>
 
             <div class="col-md-7 col-sm-12 border-left">
@@ -24,5 +32,12 @@
             </div>
         </div>
         <?php } ?>
+
+        <div class="row">
+            <div class="col-md-12 load_more">
+                <a target="_blank" rel="nofollow" href="<?php echo home_url(); ?>">Load More Tickets</a>
+            </div>
+        </div>
+
     </div>
 </div>
