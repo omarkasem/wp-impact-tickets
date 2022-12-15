@@ -2,7 +2,7 @@
 /**
  * Plugin Name: WP Vivid Seats Tickets
  * Description: Create tickets via vivid_seats.
- * Version:     1.0.1
+ * Version:     1.0.2
  * Author:      Omar Kasem
  * License:     GPL v3
  * License URI: https://www.gnu.org/licenses/gpl-3.0.txt
@@ -13,7 +13,7 @@ if ( ! defined( 'WPINC' ) ) {
 	die;
 }
 
-define( 'OK_VIVID_SEATS_TICKETS_VERSION', '1.0.1' );
+define( 'OK_VIVID_SEATS_TICKETS_VERSION', '1.0.2' );
 define( 'OK_VIVID_SEATS_TICKETS_NAME', 'wp-vivid-seats-tickets' );
 define( 'OK_VIVID_SEATS_TICKETS_URL', plugin_dir_url( __FILE__ ) );
 define( 'OK_VIVID_SEATS_TICKETS_PATH', plugin_dir_path( __FILE__ ) );

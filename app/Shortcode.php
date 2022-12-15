@@ -17,11 +17,12 @@ class Shortcode{
         
         $url = 'https://api.vivid_seats.com/Mediapartners/'.$acc_id.'/Catalogs/ItemSearch.json';
         $performer = $atts['performer'];
+        $keyword = $atts['keyword'];
         $category = $atts['category'];
         $venue = $atts['venue'];
         $city = $atts['city'];
 
-        $req = App::get_events($performer,$category,$venue,$city,20);
+        $req = App::get_events($performer,$keyword,$category,$venue,$city,20);
         if(is_wp_error($req)){
             return '<p>API Error.</p>';
         }

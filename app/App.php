@@ -5,10 +5,11 @@ class App{
 
     public function __construct(){
         add_action('init',array($this,'redirect_to_ticket'));
+        add_action('init',array($this,'load_more_redirect'));
         
     }
 
-    public static function get_events($performer,$category,$venue,$city,$count=10){
+    public static function get_events($performer,$keyword,$category,$venue,$city,$count=10){
         $acc_id = get_option('wp_vivid_seats_acc_id');
         $auth_token = get_option('wp_vivid_seats_auth_token');
         if(!$acc_id || !$auth_token){
@@ -19,6 +20,11 @@ class App{
         $args['PageSize'] = $count;
 
         $args['Query'] = '';
+
+        if($keyword){
+            $args['keyword'] = $keyword;
+        }
+
         if($performer){
             $args['Query'] = $args['Query']." Name='".$performer."'";
         }
@@ -50,10 +56,19 @@ class App{
         return $req;
     }
 
-    public function redirect_to_ticket(){
-        if(!isset($_GET['cat']) && !isset($_GET['ticket'])){
+    public function load_more_redirect(){
+        if(!isset($_GET['load_more']) && !isset($_GET['ticket'])){
             return;
         }
+
+        $url = 'https://www.vividseats.com/search?searchTerm='.$_GET['ticket'].'&irclickid=WW4xIJwNtxyNUiqVqVVaMziqUkAxKZWWGTx:040&utm_source=impact&utm_medium=affiliate&utm_content=3177810&utm_term=loadmore&irgwc=1';
+        wp_redirect($url);
+        exit;
+        
+    }
+
+    public function redirect_to_ticket(){
+
 
         $acc_id = get_option('wp_vivid_seats_acc_id');
         $auth_token = get_option('wp_vivid_seats_auth_token');

@@ -1,7 +1,7 @@
 jQuery( document ).ready( function ($) {
 	'use strict';
     
-    $('.performer,.category,.venue,.city').keypress(function (e) {
+    $('.performer,.category,.venue,.city,.keyword').keypress(function (e) {
         var key = e.which;
         if(key == 13)  // the enter key code
          {
@@ -17,12 +17,14 @@ jQuery( document ).ready( function ($) {
         var loader = $('.vst_search img');
         loader.show();
         var performer = $('.performer').val();
+        var keyword = $('.keyword').val();
         var category = $('.category').val();
         var venue = $('.venue').val();
         var city = $('.city').val();
 
         var vars = {};
         vars.performer = performer;
+        vars.keyword = keyword;
         vars.category = category;
         vars.venue = venue;
         vars.city = city;
@@ -44,6 +46,7 @@ jQuery( document ).ready( function ($) {
     $('.vst_generate').click(function(e){
         e.preventDefault();
         var performer = $('.performer').val();
+        var keyword = $('.keyword').val();
         var category = $('.category').val();
         var venue = $('.venue').val();
         var city = $('.city').val();
@@ -51,6 +54,9 @@ jQuery( document ).ready( function ($) {
         var shortcode_div ='';
         if(performer){
             shortcode_div+= 'performer="'+performer+'"';
+        }
+        if(keyword){
+            shortcode_div+= 'keyword="'+keyword+'"';
         }
         if(category){
             shortcode_div+= ' category="'+category+'"';

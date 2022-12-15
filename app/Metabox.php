@@ -13,11 +13,12 @@ class Metabox{
 
     public function search(){
         $performer = $_POST['vars']['performer'];
+        $keyword = $_POST['vars']['keyword'];
         $category = $_POST['vars']['category'];
         $venue = $_POST['vars']['venue'];
         $city = $_POST['vars']['city'];
 
-        $req = App::get_events($performer,$category,$venue,$city,10);
+        $req = App::get_events($performer,$keyword,$category,$venue,$city,10);
 
         if(is_wp_error($req)){
             wp_send_json_success(['success'=>false,'output'=>'<li>API Error.</li>']);
@@ -66,6 +67,9 @@ class Metabox{
 		$output = '<div class="vst_block"><h3>Search for events</h3>';
 		$output .='<div class="field"><label for="performer">Performer</label>';
         $output.= '<input type="text" class="regular-text performer" id="performer"></div>';
+
+		$output .='<div class="field"><label for="keyword">Keyword</label>';
+        $output.= '<input type="text" class="regular-text keyword" id="keyword"></div>';
 
 		$output .='<div class="field"><label for="category">Category</label>';
         $output.= '<input type="text" class="regular-text category" id="category"></div>';

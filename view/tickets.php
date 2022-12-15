@@ -35,9 +35,8 @@
 
         <div class="row">
             <div class="col-md-12 load_more">
-                <a target="_blank" rel="nofollow" href="https://www.vividseats.com/search?searchTerm=<?php echo ($performer ? $performer : $venue); ?>&irclickid=WW4xIJwNtxyNUiqVqVVaMziqUkAxKZWWGTx:040&utm_source=impact&utm_medium=affiliate&utm_campaign=Richard Sobin&utm_content=3177810&utm_term=&irgwc=1">Load More Tickets</a>
+                <a target="_blank" rel="nofollow" href="?load_more&ticket=<?php if($performer != ''){echo $performer;}elseif($keyword != ''){echo $keyword;}else{echo $venue;} ?>">Load More Tickets</a>
             </div>
         </div>
-
     </div>
 </div>
