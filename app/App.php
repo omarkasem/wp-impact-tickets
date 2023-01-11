@@ -26,7 +26,7 @@ class App{
         }
 
         if($performer){
-            $args['Query'] = $args['Query']." Name='".$performer."'";
+            $args['Query'] = $args['Query']." Name~'".$performer."'";
         }
 
         if($category){
